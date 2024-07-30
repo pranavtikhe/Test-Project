@@ -1,12 +1,15 @@
 <template>
   <h1>Edit your Profile</h1>
   <div class="upload">
-    <input ref="fileInput" type="file" @input="chooseFile" />
+    <label class="img">Change image</label>
+    <img style="" :src="image" alt="">
+    <input @change="handleImage" class="custom" type="file" accept="image/*">
+  <!-- <input ref="fileInput" type="file" @input="chooseFile" /> --> 
   </div>
   <h4>Update your Name</h4>
-  <input type="text" v-model="fullName" placeholder="enter"  />
+  <input type="text" v-model="username" placeholder="enter" />
   <h4>Update your Bio display</h4>
-  <input type="text" v-model="bio" placeholder="Bio"  />
+  <input type="text" v-model="about" placeholder="Bio" />
   <div class="cancel">
     <router-link to="/">Cancel</router-link>
   </div>
@@ -19,36 +22,43 @@
 import axios from "axios";
 
 export default {
-
-      data(){
-
+  data() {
     return {
-      bio : this.$store.getters.bio,
-        fullName: this.$store.getters.fullName
-    }
-  },
-      methods: {
-        updateUser() {
+      about: this.$store.getters.bio,
+      username: this.$store.getters.fullName,
+      image: '',
+      remoteurl: '',
 
-
-          //console.log("====>"+ this.$store.getters.bio)
-        console.log(this.bio);
-
-          axios
-            .post("http://localhost:3000/api/saveuser", {
-              firstName: "Renat",
-              lastName: "Galyamov",
-              bio: this.bio
-            })
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        },
-      },
     };
+  },
+
+  methods: {
+    updateUser() {
+      //console.log("====>"+ this.$store.getters.bio)
+      console.log(this.bio);
+      const user = { id:"66a93e05aa059d260385e6e6", username: this.username, about: this.about, image: this.image}
+
+      axios
+        .post("http://localhost:3000/api/saveuser",user)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    handleImage(e){
+      console.log("inside handle")
+      const selectImage = e.target.files[0];
+      this.image = selectImage;
+      const reader = new FileReader();
+      //const image = reader.readAsDataURL(selectImage);
+      console.log(selectImage);
+
+    }
+
+  },
+};
 </script>
 
 <style scoped>
