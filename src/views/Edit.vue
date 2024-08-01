@@ -1,5 +1,5 @@
 <template>
-  <h1>Edit your Profile</h1>
+  <h1 class="font-serif text-2xl font-medium text-center text-red-600">Edit your Profile</h1>
   <div class="upload">
     <label class="img">Change image</label>
     <img style="" :src="image" alt="">

@@ -4,7 +4,7 @@
   </div>
 
   <label class="name">{{ user.username }}</label>
-
+  <h2 class="font-serif text-xl ">About</h2>
   <label class="bio">{{ user.about }}</label>
 
   <div class="edit">
@@ -33,7 +33,7 @@ export default {
       .get("http://localhost:3000/api/users/66a93e05aa059d260385e6e6")
       .then((response) => {
         this.user = response.data;
-        console.log(response.data)
+        console.log("user data",response.data)
         // const reader = new FileReader();
         // this.remoteImage = response.data.image;
         // reader.readAsDataURL(this.remoteImage);
@@ -66,46 +66,5 @@ export default {
 </script>
 
 <style scoped>
-.image {
-  width: 150px;
-  height: 150px;
-  display: inline-flex;
-}
 
-.name {
-  text-align: center;
-  display: flow;
-  padding: 40px;
-  color: black;
-}
-
-.bio {
-  text-align: center;
-  display: flow;
-  padding: 40px;
-  color: black;
-  border-style: solid;
-  border-width: 2px;
-  border-color: darkslategrey;
-  padding: 15px;
-}
-
-.edit{
-    position: fixed;
-    right: 180px;
-    bottom: 350px;
-}
-
-.share{
-    position: fixed;
-    bottom: 120px;
-    right: 145px;
-}
-.contact{
-    position: fixed;
-    left: 130px;
-    bottom: 350px;
-    border-style: outset;
-    border-color: darkslategray;
-}
 </style>

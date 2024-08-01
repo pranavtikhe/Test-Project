@@ -4,6 +4,7 @@ const express = require("express");
 const base64Img = require("base64-img")
 const app = express();
 var collection;
+var collectionLink;
 
 const cors = require("cors");
 app.use(cors());
@@ -46,10 +47,8 @@ async function createDB() {
     
     // collectionLink = db.collection("link");
     // collectionLink.insertOne({
-    //   username: "Pranav Tikhe",
-    //   about:
-    //     "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit",
-    //   image: "",
+    //   linkAddress: "link1",
+    //   userId:"",
     // });
   } catch (e) {
     console.log("error connecting to MongoDB" + e);
@@ -69,10 +68,13 @@ app.get("/api/users/:id", async (req, res, next) => {
   // return res.json(user);
   console.log(req.params.id);
   console.log("hey!");
-  let user = await collection.findOne({ _id: new ObjectId(req.params.id) });
+  // let user = await collection.findOne({ _id: new ObjectId(req.params.id) });
+  // let links = await collectionLink.findMany({userId: new ObjectId(user._id +'')});
 
-  return res.json(user);
-});
+//   user['links'] = links;
+  
+//     return res.json(user);
+ });
 
 app.post("/api/saveuser", async (req, res, next) => {
   console.log("inside save");
