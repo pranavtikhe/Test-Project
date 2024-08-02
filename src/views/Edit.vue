@@ -1,10 +1,12 @@
 <template>
-  <h1 class="font-serif text-2xl font-medium text-center text-red-600">Edit your Profile</h1>
+  <h1 class="font-serif text-3xl font-medium text-center text-red-600">
+    Edit your Profile
+  </h1>
   <div class="upload">
     <label class="img">Change image</label>
-    <img style="" :src="image" alt="">
-    <input @change="handleImage" class="custom" type="file" accept="image/*">
-  <!-- <input ref="fileInput" type="file" @input="chooseFile" /> --> 
+    <img style="" :src="image" alt="" />
+    <input @change="handleImage" class="custom" type="file" accept="image/*" />
+    <!-- <input ref="fileInput" type="file" @input="chooseFile" /> -->
   </div>
   <h4>Update your Name</h4>
   <input type="text" v-model="username" placeholder="enter" />
@@ -26,9 +28,8 @@ export default {
     return {
       about: this.$store.getters.bio,
       username: this.$store.getters.fullName,
-      image: '',
-      remoteurl: '',
-
+      image: "",
+      remoteurl: "",
     };
   },
 
@@ -36,10 +37,15 @@ export default {
     updateUser() {
       //console.log("====>"+ this.$store.getters.bio)
       console.log(this.bio);
-      const user = { id:"66a93e05aa059d260385e6e6", username: this.username, about: this.about, image: this.image}
+      const user = {
+        id: "66a93e05aa059d260385e6e6",
+        username: this.username,
+        about: this.about,
+        image: this.image,
+      };
 
       axios
-        .post("http://localhost:3000/api/saveuser",user)
+        .post("http://localhost:3000/api/saveuser", user)
         .then(function (response) {
           console.log(response);
         })
@@ -47,19 +53,20 @@ export default {
           console.log(error);
         });
     },
-    handleImage(e){
-      console.log("inside handle")
+    handleImage(e) {
+      console.log("inside handle");
       const selectImage = e.target.files[0];
-      this.image = selectImage;
+      //this.image = selectImage;
       const reader = new FileReader();
-      //const image = reader.readAsDataURL(selectImage);
-      console.log(selectImage);
 
-    }
-
+      reader.onloadend = () => {
+        this.image = reader.result;
+        console.log(this.image);
+      };
+      reader.readAsDataURL(selectImage);
+    },
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

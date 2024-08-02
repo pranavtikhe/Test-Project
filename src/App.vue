@@ -26,4 +26,10 @@ export default {
 };
 </script>
 
-<style src="./assets/index.css" />
+<style>
+#app {
+  
+  @apply text-center py-10
+
+}
+</style>

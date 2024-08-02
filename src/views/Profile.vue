@@ -1,10 +1,10 @@
 <template>
   <div class="image">
-    <img :src= "remoteImage" alt="" />
+    <img :src="remoteImage" alt="" />
   </div>
 
   <label class="name">{{ user.username }}</label>
-  <h2 class="font-serif text-xl ">About</h2>
+  <h2 class="font-serif text-xl">About</h2>
   <label class="bio">{{ user.about }}</label>
 
   <div class="edit">
@@ -33,7 +33,7 @@ export default {
       .get("http://localhost:3000/api/users/66a93e05aa059d260385e6e6")
       .then((response) => {
         this.user = response.data;
-        console.log("user data",response.data)
+        console.log("user data", response.data);
         // const reader = new FileReader();
         // this.remoteImage = response.data.image;
         // reader.readAsDataURL(this.remoteImage);
@@ -66,5 +66,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

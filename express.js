@@ -1,7 +1,7 @@
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const port = 3000;
 const express = require("express");
-const base64Img = require("base64-img")
+const base64Img = require("base64-img");
 const app = express();
 var collection;
 var collectionLink;
@@ -44,7 +44,7 @@ async function createDB() {
     //     "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit",
     //   image: "",
     // });
-    
+
     // collectionLink = db.collection("link");
     // collectionLink.insertOne({
     //   linkAddress: "link1",
@@ -71,20 +71,23 @@ app.get("/api/users/:id", async (req, res, next) => {
   // let user = await collection.findOne({ _id: new ObjectId(req.params.id) });
   // let links = await collectionLink.findMany({userId: new ObjectId(user._id +'')});
 
-//   user['links'] = links;
-  
-//     return res.json(user);
- });
+  //   user['links'] = links;
+
+  //     return res.json(user);
+});
 
 app.post("/api/saveuser", async (req, res, next) => {
   console.log("inside save");
   const user = req.body;
   console.log(user);
-  const filter = { _id: new ObjectId(req.body.id + '') };
+  const filter = { _id: new ObjectId(req.body.id + "") };
 
-  replacementDocument = {username:user.username , about: user.about, image: user.image};
-  const result = await collection.replaceOne(filter , replacementDocument);
-
+  replacementDocument = {
+    username: user.username,
+    about: user.about,
+    image: user.image,
+  };
+  const result = await collection.replaceOne(filter, replacementDocument);
 
   // const updateDocument = {
   //   $set: {
@@ -93,7 +96,7 @@ app.post("/api/saveuser", async (req, res, next) => {
   //   },
   // };
   //const result = await collection.updateOne(filter, updateDocument);
-  console.log(result)
+  console.log(result);
 
   // Save the data of user that was sent by the client
   // Send a response to client that will show that the request was successfull.
