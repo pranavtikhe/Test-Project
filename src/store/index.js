@@ -3,48 +3,56 @@ import { createStore } from 'vuex'
 const store = createStore({
     state: {
         user: {
-            // username: '',
-            fullName: '',
-            bio: '',
+            username: '',
+            about: '',
             image: '',
+            link: '',
         }
     },
 
     getters: {
-        bio: state => {
-          return state.user.bio;
+        about: state => {
+          return state.user.about;
         },
-        fullName: state => {
-            return state.user.fullName;
+        username: state => {
+            return state.user.username;
           },
           image: state => {
             return state.user.image;
           },
+          link: state => {
+            return state.user.link;
+          }
               },
 
+          
+
     mutations: {
-        changeBio (state, payload) {
-          state.user.bio = payload.newBio
+        changeAbout (state, payload) {
+          state.user.about = payload.newAbout
         },
         
-        changeName (state, payload) {
-          state.user.fullName = payload.newUsername
+        changeUsername (state, payload) {
+          state.user.username = payload.newUsername
         },
         changeImage (state, payload) {
         state.user.image = payload.newImage
         },
+        changeLink(state, payload) {
+          state.user.link = payload.newLink
+          },
      },
 
      actions: {
         changeBio (context, payload) {
           setTimeout(() => {
-            context.commit("changeBio", payload);
+            context.commit("changeAbout", payload);
           }, 2000);
         },
 
         changeName(context, payload) {
           setTimeout(() => {
-            context.commit("changeName", payload);
+            context.commit("changeUsername", payload);
           }, 2000);
           },
 
@@ -53,7 +61,14 @@ const store = createStore({
               context.commit("changeImage", payload);
             }, 2000);
             },
-        }
+
+           changeImage(context, payload) {
+              setTimeout(() => {
+                context.commit("changeLink", payload);
+              }, 2000);
+            },
+          },
+        
 
   });
  

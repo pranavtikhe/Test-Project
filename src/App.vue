@@ -1,4 +1,5 @@
 <template>
+  
   <router-view />
 </template>
 
@@ -23,13 +24,16 @@ export default {
   return: {
     Profile,
   },
+  
 };
 </script>
 
 <style>
 #app {
-  
-  @apply text-center py-10
-
+  @apply text-center py-8;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
 }
+
+@import "main.scss"
 </style>
