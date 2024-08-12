@@ -83,6 +83,17 @@
 
   <br/>
 
+  <!-- <ShareNetwork
+    network="facebook"
+    url="http://192.168.0.102:8080/"
+    title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+    description="This week, Id like to introduce you to 'Vite', which means 'Fast'. Its a brand new development setup created by Evan You."
+    quote="The hot reload is so fast it\'s near instant. - Evan You"
+    hashtags="vuejs,vite"
+  >
+    Share on Facebook
+</ShareNetwork> -->
+
   
 </template>
 
